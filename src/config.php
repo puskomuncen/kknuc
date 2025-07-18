@@ -599,7 +599,7 @@ $CONFIG = [
     "API_CHAT_ACTION" => "chat", // API chat action
 
     // List page inline/grid/modal settings
-    "USE_AJAX_ACTIONS" => false,
+    "USE_AJAX_ACTIONS" => true,
 
     // Send push notification time limit
     "SEND_PUSH_NOTIFICATION_TIME_LIMIT" => 300,
@@ -789,7 +789,7 @@ $CONFIG = [
     "FILTER_PAGE_SIZE" => 100,
 
     // Auto fill original value
-    "AUTO_FILL_ORIGINAL_VALUE" => false,
+    "AUTO_FILL_ORIGINAL_VALUE" => true,
 
     // Lookup
     "MULTIPLE_OPTION_SEPARATOR" => ',',
