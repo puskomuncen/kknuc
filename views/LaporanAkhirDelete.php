@@ -106,7 +106,8 @@ while ($Page->fetch()) {
         <td<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
 <?php } ?>

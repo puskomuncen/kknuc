@@ -506,6 +506,8 @@ class PendaftaranAdd extends Pendaftaran
 		// End of Compare Root URL by Masino Sinaga, September 10, 2023
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->nim);
+        $this->setupLookupOptions($this->id_kegiatan);
         $this->setupLookupOptions($this->status);
 
         // Load default values for add
@@ -679,7 +681,7 @@ class PendaftaranAdd extends Pendaftaran
             if (IsApi() && $val === null) {
                 $this->id_kegiatan->Visible = false; // Disable update for API request
             } else {
-                $this->id_kegiatan->setFormValue($val, true, $validate);
+                $this->id_kegiatan->setFormValue($val);
             }
         }
 
@@ -826,11 +828,52 @@ class PendaftaranAdd extends Pendaftaran
             $this->id_pendaftaran->ViewValue = $this->id_pendaftaran->CurrentValue;
 
             // nim
-            $this->nim->ViewValue = $this->nim->CurrentValue;
+            $curVal = strval($this->nim->CurrentValue);
+            if ($curVal != "") {
+                $this->nim->ViewValue = $this->nim->lookupCacheOption($curVal);
+                if ($this->nim->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->nim->Lookup->getTable()->Fields["nim"]->searchExpression(), "=", $curVal, $this->nim->Lookup->getTable()->Fields["nim"]->searchDataType(), "DB");
+                    $sqlWrk = $this->nim->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->nim->Lookup->renderViewRow($row);
+                        }
+                        $this->nim->ViewValue = $this->nim->displayValue($rows[0]);
+                    } else {
+                        $this->nim->ViewValue = $this->nim->CurrentValue;
+                    }
+                }
+            } else {
+                $this->nim->ViewValue = null;
+            }
 
             // id_kegiatan
-            $this->id_kegiatan->ViewValue = $this->id_kegiatan->CurrentValue;
-            $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->ViewValue, $this->id_kegiatan->formatPattern());
+            $curVal = strval($this->id_kegiatan->CurrentValue);
+            if ($curVal != "") {
+                $this->id_kegiatan->ViewValue = $this->id_kegiatan->lookupCacheOption($curVal);
+                if ($this->id_kegiatan->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchExpression(), "=", $curVal, $this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchDataType(), "DB");
+                    $sqlWrk = $this->id_kegiatan->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->id_kegiatan->Lookup->renderViewRow($row);
+                        }
+                        $this->id_kegiatan->ViewValue = $this->id_kegiatan->displayValue($rows[0]);
+                    } else {
+                        $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->CurrentValue, $this->id_kegiatan->formatPattern());
+                    }
+                }
+            } else {
+                $this->id_kegiatan->ViewValue = null;
+            }
 
             // status
             if (strval($this->status->CurrentValue) != "") {
@@ -857,16 +900,67 @@ class PendaftaranAdd extends Pendaftaran
         } elseif ($this->RowType == RowType::ADD) {
             // nim
             $this->nim->setupEditAttributes();
-            $this->nim->EditValue = !$this->nim->Raw ? HtmlDecode($this->nim->CurrentValue) : $this->nim->CurrentValue;
+            $curVal = trim(strval($this->nim->CurrentValue));
+            if ($curVal != "") {
+                $this->nim->ViewValue = $this->nim->lookupCacheOption($curVal);
+            } else {
+                $this->nim->ViewValue = $this->nim->Lookup !== null && is_array($this->nim->lookupOptions()) && count($this->nim->lookupOptions()) > 0 ? $curVal : null;
+            }
+            if ($this->nim->ViewValue !== null) { // Load from cache
+                $this->nim->EditValue = array_values($this->nim->lookupOptions());
+            } else { // Lookup from database
+                if ($curVal == "") {
+                    $filterWrk = "0=1";
+                } else {
+                    $filterWrk = SearchFilter($this->nim->Lookup->getTable()->Fields["nim"]->searchExpression(), "=", $this->nim->CurrentValue, $this->nim->Lookup->getTable()->Fields["nim"]->searchDataType(), "DB");
+                }
+                $sqlWrk = $this->nim->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                $rows = [];
+                if ($ari > 0) { // Lookup values found
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->nim->Lookup->renderViewRow($row);
+                    }
+                } else {
+                    $this->nim->ViewValue = $this->language->phrase("PleaseSelect");
+                }
+                $this->nim->EditValue = $rows;
+            }
             $this->nim->PlaceHolder = RemoveHtml($this->nim->caption());
 
             // id_kegiatan
             $this->id_kegiatan->setupEditAttributes();
-            $this->id_kegiatan->EditValue = $this->id_kegiatan->CurrentValue;
-            $this->id_kegiatan->PlaceHolder = RemoveHtml($this->id_kegiatan->caption());
-            if (strval($this->id_kegiatan->EditValue) != "" && is_numeric($this->id_kegiatan->EditValue)) {
-                $this->id_kegiatan->EditValue = FormatNumber($this->id_kegiatan->EditValue, null);
+            $curVal = trim(strval($this->id_kegiatan->CurrentValue));
+            if ($curVal != "") {
+                $this->id_kegiatan->ViewValue = $this->id_kegiatan->lookupCacheOption($curVal);
+            } else {
+                $this->id_kegiatan->ViewValue = $this->id_kegiatan->Lookup !== null && is_array($this->id_kegiatan->lookupOptions()) && count($this->id_kegiatan->lookupOptions()) > 0 ? $curVal : null;
             }
+            if ($this->id_kegiatan->ViewValue !== null) { // Load from cache
+                $this->id_kegiatan->EditValue = array_values($this->id_kegiatan->lookupOptions());
+            } else { // Lookup from database
+                if ($curVal == "") {
+                    $filterWrk = "0=1";
+                } else {
+                    $filterWrk = SearchFilter($this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchExpression(), "=", $this->id_kegiatan->CurrentValue, $this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchDataType(), "DB");
+                }
+                $sqlWrk = $this->id_kegiatan->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                $rows = [];
+                if ($ari > 0) { // Lookup values found
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->id_kegiatan->Lookup->renderViewRow($row);
+                    }
+                } else {
+                    $this->id_kegiatan->ViewValue = $this->language->phrase("PleaseSelect");
+                }
+                $this->id_kegiatan->EditValue = $rows;
+            }
+            $this->id_kegiatan->PlaceHolder = RemoveHtml($this->id_kegiatan->caption());
 
             // status
             $this->status->EditValue = $this->status->options(false);
@@ -918,9 +1012,6 @@ class PendaftaranAdd extends Pendaftaran
                 if (!$this->id_kegiatan->IsDetailKey && IsEmpty($this->id_kegiatan->FormValue)) {
                     $this->id_kegiatan->addErrorMessage(str_replace("%s", $this->id_kegiatan->caption(), $this->id_kegiatan->RequiredErrorMessage));
                 }
-            }
-            if (!CheckInteger($this->id_kegiatan->FormValue)) {
-                $this->id_kegiatan->addErrorMessage($this->id_kegiatan->getErrorMessage(false));
             }
             if ($this->status->Visible && $this->status->Required) {
                 if ($this->status->FormValue == "") {
@@ -1040,6 +1131,10 @@ class PendaftaranAdd extends Pendaftaran
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_nim":
+                    break;
+                case "x_id_kegiatan":
+                    break;
                 case "x_status":
                     break;
                 default:

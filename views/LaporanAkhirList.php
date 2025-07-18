@@ -237,7 +237,8 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
         <td data-name="file_laporan"<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_laporan_akhir_file_laporan" class="el_laporan_akhir_file_laporan">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
     <?php } ?>
@@ -340,7 +341,8 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
         <td data-name="file_laporan"<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_laporan_akhir_file_laporan" class="el_laporan_akhir_file_laporan">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
     <?php } ?>
@@ -492,7 +494,8 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
         <td data-name="file_laporan"<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_laporan_akhir_file_laporan" class="el_laporan_akhir_file_laporan">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
     <?php } ?>
@@ -595,7 +598,8 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
         <td data-name="file_laporan"<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_laporan_akhir_file_laporan" class="el_laporan_akhir_file_laporan">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
     <?php } ?>

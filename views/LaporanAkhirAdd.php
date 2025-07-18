@@ -23,7 +23,7 @@ loadjs.ready(["wrapper", "head"], function () {
         // Add fields
         .setFields([
             ["id_penempatan", [fields.id_penempatan.visible && fields.id_penempatan.required ? ew.Validators.required(fields.id_penempatan.caption) : null, ew.Validators.integer], fields.id_penempatan.isInvalid],
-            ["file_laporan", [fields.file_laporan.visible && fields.file_laporan.required ? ew.Validators.required(fields.file_laporan.caption) : null], fields.file_laporan.isInvalid],
+            ["file_laporan", [fields.file_laporan.visible && fields.file_laporan.required ? ew.Validators.fileRequired(fields.file_laporan.caption) : null], fields.file_laporan.isInvalid],
             ["nilai_dosen", [fields.nilai_dosen.visible && fields.nilai_dosen.required ? ew.Validators.required(fields.nilai_dosen.caption) : null, ew.Validators.integer], fields.nilai_dosen.isInvalid],
             ["nilai_instansi", [fields.nilai_instansi.visible && fields.nilai_instansi.required ? ew.Validators.required(fields.nilai_instansi.caption) : null, ew.Validators.integer], fields.nilai_instansi.isInvalid]
         ])
@@ -114,12 +114,35 @@ loadjs.ready(['flaporan_akhiradd', 'jqueryinputmask'], function() {
 <?php } ?>
 <?php if ($Page->file_laporan->Visible) { // file_laporan ?>
     <div id="r_file_laporan"<?= $Page->file_laporan->rowAttributes() ?>>
-        <label id="elh_laporan_akhir_file_laporan" for="x_file_laporan" class="<?= $Page->LeftColumnClass ?>"><?= $Page->file_laporan->caption() ?><?= $Page->file_laporan->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <label id="elh_laporan_akhir_file_laporan" class="<?= $Page->LeftColumnClass ?>"><?= $Page->file_laporan->caption() ?><?= $Page->file_laporan->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el_laporan_akhir_file_laporan">
-<input type="<?= $Page->file_laporan->getInputTextType() ?>" name="x_file_laporan" id="x_file_laporan" data-table="laporan_akhir" data-field="x_file_laporan" value="<?= $Page->file_laporan->getEditValue() ?>" size="30" maxlength="255" placeholder="<?= HtmlEncode($Page->file_laporan->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->file_laporan->formatPattern()) ?>"<?= $Page->file_laporan->editAttributes() ?> aria-describedby="x_file_laporan_help">
-<?= $Page->file_laporan->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->file_laporan->getErrorMessage() ?></div>
+<div id="fd_x_file_laporan" class="fileinput-button ew-file-drop-zone">
+    <input
+        type="file"
+        id="x_file_laporan"
+        name="x_file_laporan"
+        class="form-control ew-file-input"
+        title="<?= $Page->file_laporan->title() ?>"
+        lang="<?= CurrentLanguageID() ?>"
+        data-table="laporan_akhir"
+        data-field="x_file_laporan"
+        data-size="255"
+        data-accept-file-types="<?= $Page->file_laporan->acceptFileTypes() ?>"
+        data-max-file-size="<?= $Page->file_laporan->UploadMaxFileSize ?>"
+        data-max-number-of-files="null"
+        data-disable-image-crop="<?= $Page->file_laporan->ImageCropper ? 0 : 1 ?>"
+        aria-describedby="x_file_laporan_help"
+        <?= ($Page->file_laporan->ReadOnly || $Page->file_laporan->Disabled) ? " disabled" : "" ?>
+        <?= $Page->file_laporan->editAttributes() ?>
+    >
+    <div class="text-body-secondary ew-file-text"><?= $Language->phrase("ChooseFile") ?></div>
+    <?= $Page->file_laporan->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->file_laporan->getErrorMessage() ?></div>
+</div>
+<input type="hidden" name="fn_x_file_laporan" id= "fn_x_file_laporan" value="<?= $Page->file_laporan->Upload->FileName ?>">
+<input type="hidden" name="fa_x_file_laporan" id= "fa_x_file_laporan" value="0">
+<table id="ft_x_file_laporan" class="table table-sm float-start ew-upload-table"><tbody class="files"></tbody></table>
 </span>
 </div></div>
     </div>

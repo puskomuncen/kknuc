@@ -46,7 +46,7 @@ loadjs.ready(["wrapper", "head"], function () {
         .setFields([
             ["id_pendaftaran", [fields.id_pendaftaran.visible && fields.id_pendaftaran.required ? ew.Validators.required(fields.id_pendaftaran.caption) : null], fields.id_pendaftaran.isInvalid],
             ["nim", [fields.nim.visible && fields.nim.required ? ew.Validators.required(fields.nim.caption) : null], fields.nim.isInvalid],
-            ["id_kegiatan", [fields.id_kegiatan.visible && fields.id_kegiatan.required ? ew.Validators.required(fields.id_kegiatan.caption) : null, ew.Validators.integer], fields.id_kegiatan.isInvalid],
+            ["id_kegiatan", [fields.id_kegiatan.visible && fields.id_kegiatan.required ? ew.Validators.required(fields.id_kegiatan.caption) : null], fields.id_kegiatan.isInvalid],
             ["status", [fields.status.visible && fields.status.required ? ew.Validators.required(fields.status.caption) : null], fields.status.isInvalid],
             ["tanggal_daftar", [fields.tanggal_daftar.visible && fields.tanggal_daftar.required ? ew.Validators.required(fields.tanggal_daftar.caption) : null, ew.Validators.datetime(fields.tanggal_daftar.clientFormatPattern)], fields.tanggal_daftar.isInvalid]
         ])
@@ -64,6 +64,8 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
+            "nim": <?= $Page->nim->toClientList($Page) ?>,
+            "id_kegiatan": <?= $Page->id_kegiatan->toClientList($Page) ?>,
             "status": <?= $Page->status->toClientList($Page) ?>,
         })
         .build();
@@ -106,9 +108,43 @@ loadjs.ready("head", function () {
         <label id="elh_pendaftaran_nim" for="x_nim" class="<?= $Page->LeftColumnClass ?>"><?= $Page->nim->caption() ?><?= $Page->nim->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->nim->cellAttributes() ?>>
 <span id="el_pendaftaran_nim">
-<input type="<?= $Page->nim->getInputTextType() ?>" name="x_nim" id="x_nim" data-table="pendaftaran" data-field="x_nim" value="<?= $Page->nim->getEditValue() ?>" size="30" maxlength="15" placeholder="<?= HtmlEncode($Page->nim->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->nim->formatPattern()) ?>"<?= $Page->nim->editAttributes() ?> aria-describedby="x_nim_help">
-<?= $Page->nim->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->nim->getErrorMessage() ?></div>
+    <select
+        id="x_nim"
+        name="x_nim"
+        class="form-select ew-select<?= $Page->nim->isInvalidClass() ?>"
+        <?php if (!$Page->nim->IsNativeSelect) { ?>
+        data-select2-id="fpendaftaranedit_x_nim"
+        <?php } ?>
+        data-table="pendaftaran"
+        data-field="x_nim"
+        data-value-separator="<?= $Page->nim->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->nim->getPlaceHolder()) ?>"
+        <?= $Page->nim->editAttributes() ?>>
+        <?= $Page->nim->selectOptionListHtml("x_nim") ?>
+    </select>
+    <?= $Page->nim->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->nim->getErrorMessage() ?></div>
+<?= $Page->nim->Lookup->getParamTag($Page, "p_x_nim") ?>
+<?php if (!$Page->nim->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("fpendaftaranedit", function() {
+    var options = { name: "x_nim", selectId: "fpendaftaranedit_x_nim" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fpendaftaranedit.lists.nim?.lookupOptions.length) {
+        options.data = { id: "x_nim", form: "fpendaftaranedit" };
+    } else {
+        options.ajax = { id: "x_nim", form: "fpendaftaranedit", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.pendaftaran.fields.nim.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
 </span>
 </div></div>
     </div>
@@ -118,23 +154,43 @@ loadjs.ready("head", function () {
         <label id="elh_pendaftaran_id_kegiatan" for="x_id_kegiatan" class="<?= $Page->LeftColumnClass ?>"><?= $Page->id_kegiatan->caption() ?><?= $Page->id_kegiatan->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->id_kegiatan->cellAttributes() ?>>
 <span id="el_pendaftaran_id_kegiatan">
-<input type="<?= $Page->id_kegiatan->getInputTextType() ?>" name="x_id_kegiatan" id="x_id_kegiatan" data-table="pendaftaran" data-field="x_id_kegiatan" value="<?= $Page->id_kegiatan->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->id_kegiatan->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->id_kegiatan->formatPattern()) ?>"<?= $Page->id_kegiatan->editAttributes() ?> aria-describedby="x_id_kegiatan_help">
-<?= $Page->id_kegiatan->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->id_kegiatan->getErrorMessage() ?></div>
+    <select
+        id="x_id_kegiatan"
+        name="x_id_kegiatan"
+        class="form-select ew-select<?= $Page->id_kegiatan->isInvalidClass() ?>"
+        <?php if (!$Page->id_kegiatan->IsNativeSelect) { ?>
+        data-select2-id="fpendaftaranedit_x_id_kegiatan"
+        <?php } ?>
+        data-table="pendaftaran"
+        data-field="x_id_kegiatan"
+        data-value-separator="<?= $Page->id_kegiatan->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->id_kegiatan->getPlaceHolder()) ?>"
+        <?= $Page->id_kegiatan->editAttributes() ?>>
+        <?= $Page->id_kegiatan->selectOptionListHtml("x_id_kegiatan") ?>
+    </select>
+    <?= $Page->id_kegiatan->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->id_kegiatan->getErrorMessage() ?></div>
+<?= $Page->id_kegiatan->Lookup->getParamTag($Page, "p_x_id_kegiatan") ?>
+<?php if (!$Page->id_kegiatan->IsNativeSelect) { ?>
 <script<?= Nonce() ?>>
-loadjs.ready(['fpendaftaranedit', 'jqueryinputmask'], function() {
-	options = {
-		'alias': 'numeric',
-		'autoUnmask': true,
-		'jitMasking': false,
-		'groupSeparator': '<?php echo $GROUPING_SEPARATOR ?>',
-		'digits': 0,
-		'radixPoint': '<?php echo $DECIMAL_SEPARATOR ?>',
-		'removeMaskOnSubmit': true
-	};
-	ew.createjQueryInputMask("fpendaftaranedit", "x_id_kegiatan", jQuery.extend(true, "", options));
+loadjs.ready("fpendaftaranedit", function() {
+    var options = { name: "x_id_kegiatan", selectId: "fpendaftaranedit_x_id_kegiatan" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fpendaftaranedit.lists.id_kegiatan?.lookupOptions.length) {
+        options.data = { id: "x_id_kegiatan", form: "fpendaftaranedit" };
+    } else {
+        options.ajax = { id: "x_id_kegiatan", form: "fpendaftaranedit", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.pendaftaran.fields.id_kegiatan.selectOptions);
+    ew.createSelect(options);
 });
 </script>
+<?php } ?>
 </span>
 </div></div>
     </div>

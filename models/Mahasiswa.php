@@ -1389,6 +1389,11 @@ class Mahasiswa extends DbTable implements LookupTableInterface
     public function renderLookupForView(string $name, mixed $value): mixed
     {
         $this->RowType = RowType::VIEW;
+        if ($name == "nama") {
+            $clone = $this->nama->getClone()->setViewValue($value);
+            $clone->ViewValue = $clone->CurrentValue;
+            return $clone->getViewValue();
+        }
         return $value;
     }
 

@@ -100,7 +100,8 @@ loadjs.ready("head", function () {
         <td data-name="file_laporan"<?= $Page->file_laporan->cellAttributes() ?>>
 <span id="el_laporan_akhir_file_laporan">
 <span<?= $Page->file_laporan->viewAttributes() ?>>
-<?= $Page->file_laporan->getViewValue() ?></span>
+<?= GetFileViewTag($Page->file_laporan, $Page->file_laporan->getViewValue(), false) ?>
+</span>
 </span>
 </td>
     </tr>

@@ -1408,6 +1408,15 @@ class Kegiatan extends DbTable implements LookupTableInterface
     public function renderLookupForView(string $name, mixed $value): mixed
     {
         $this->RowType = RowType::VIEW;
+        if ($name == "nama_kegiatan") {
+            $clone = $this->nama_kegiatan->getClone()->setViewValue($value);
+            if (strval($clone->CurrentValue) != "") {
+                $clone->ViewValue = $clone->optionCaption($clone->CurrentValue);
+            } else {
+                $clone->ViewValue = null;
+            }
+            return $clone->getViewValue();
+        }
         return $value;
     }
 

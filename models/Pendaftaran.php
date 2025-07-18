@@ -151,10 +151,25 @@ class Pendaftaran extends DbTable implements LookupTableInterface
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'TEXT' // Edit Tag
+            'SELECT' // Edit Tag
         );
         $this->nim->InputTextType = "text";
-        $this->nim->SearchOperators = ["=", "<>", "IN", "NOT IN", "STARTS WITH", "NOT STARTS WITH", "LIKE", "NOT LIKE", "ENDS WITH", "NOT ENDS WITH", "IS EMPTY", "IS NOT EMPTY", "IS NULL", "IS NOT NULL"];
+        $this->nim->setSelectMultiple(false); // Select one
+        $this->nim->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->nim->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        global $CurrentLanguage;
+        switch ($CurrentLanguage) {
+            case "en-US":
+                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                break;
+            case "id-ID":
+                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                break;
+            default:
+                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                break;
+        }
+        $this->nim->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
         $this->Fields['nim'] = &$this->nim;
 
         // id_kegiatan
@@ -173,12 +188,27 @@ class Pendaftaran extends DbTable implements LookupTableInterface
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'TEXT' // Edit Tag
+            'SELECT' // Edit Tag
         );
         $this->id_kegiatan->InputTextType = "text";
         $this->id_kegiatan->Raw = true;
+        $this->id_kegiatan->setSelectMultiple(false); // Select one
+        $this->id_kegiatan->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->id_kegiatan->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        global $CurrentLanguage;
+        switch ($CurrentLanguage) {
+            case "en-US":
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                break;
+            case "id-ID":
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                break;
+            default:
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                break;
+        }
         $this->id_kegiatan->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->id_kegiatan->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
+        $this->id_kegiatan->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
         $this->Fields['id_kegiatan'] = &$this->id_kegiatan;
 
         // status
@@ -1194,11 +1224,52 @@ class Pendaftaran extends DbTable implements LookupTableInterface
         $this->id_pendaftaran->ViewValue = $this->id_pendaftaran->CurrentValue;
 
         // nim
-        $this->nim->ViewValue = $this->nim->CurrentValue;
+        $curVal = strval($this->nim->CurrentValue);
+        if ($curVal != "") {
+            $this->nim->ViewValue = $this->nim->lookupCacheOption($curVal);
+            if ($this->nim->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->nim->Lookup->getTable()->Fields["nim"]->searchExpression(), "=", $curVal, $this->nim->Lookup->getTable()->Fields["nim"]->searchDataType(), "DB");
+                $sqlWrk = $this->nim->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->nim->Lookup->renderViewRow($row);
+                    }
+                    $this->nim->ViewValue = $this->nim->displayValue($rows[0]);
+                } else {
+                    $this->nim->ViewValue = $this->nim->CurrentValue;
+                }
+            }
+        } else {
+            $this->nim->ViewValue = null;
+        }
 
         // id_kegiatan
-        $this->id_kegiatan->ViewValue = $this->id_kegiatan->CurrentValue;
-        $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->ViewValue, $this->id_kegiatan->formatPattern());
+        $curVal = strval($this->id_kegiatan->CurrentValue);
+        if ($curVal != "") {
+            $this->id_kegiatan->ViewValue = $this->id_kegiatan->lookupCacheOption($curVal);
+            if ($this->id_kegiatan->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchExpression(), "=", $curVal, $this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchDataType(), "DB");
+                $sqlWrk = $this->id_kegiatan->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->id_kegiatan->Lookup->renderViewRow($row);
+                    }
+                    $this->id_kegiatan->ViewValue = $this->id_kegiatan->displayValue($rows[0]);
+                } else {
+                    $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->CurrentValue, $this->id_kegiatan->formatPattern());
+                }
+            }
+        } else {
+            $this->id_kegiatan->ViewValue = null;
+        }
 
         // status
         if (strval($this->status->CurrentValue) != "") {

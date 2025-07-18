@@ -586,7 +586,8 @@ class LaporanAkhirDelete extends LaporanAkhir
         $this->rowSelected($row);
         $this->id_laporan->setDbValue($row['id_laporan']);
         $this->id_penempatan->setDbValue($row['id_penempatan']);
-        $this->file_laporan->setDbValue($row['file_laporan']);
+        $this->file_laporan->Upload->DbValue = $row['file_laporan'];
+        $this->file_laporan->setDbValue($this->file_laporan->Upload->DbValue);
         $this->nilai_dosen->setDbValue($row['nilai_dosen']);
         $this->nilai_instansi->setDbValue($row['nilai_instansi']);
     }
@@ -635,7 +636,11 @@ class LaporanAkhirDelete extends LaporanAkhir
             $this->id_penempatan->ViewValue = FormatNumber($this->id_penempatan->ViewValue, $this->id_penempatan->formatPattern());
 
             // file_laporan
-            $this->file_laporan->ViewValue = $this->file_laporan->CurrentValue;
+            if (!IsEmpty($this->file_laporan->Upload->DbValue)) {
+                $this->file_laporan->ViewValue = $this->file_laporan->Upload->DbValue;
+            } else {
+                $this->file_laporan->ViewValue = "";
+            }
 
             // nilai_dosen
             $this->nilai_dosen->ViewValue = $this->nilai_dosen->CurrentValue;
@@ -655,6 +660,7 @@ class LaporanAkhirDelete extends LaporanAkhir
 
             // file_laporan
             $this->file_laporan->HrefValue = "";
+            $this->file_laporan->ExportHrefValue = $this->file_laporan->UploadPath . $this->file_laporan->Upload->DbValue;
             $this->file_laporan->TooltipValue = "";
 
             // nilai_dosen

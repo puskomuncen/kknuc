@@ -533,6 +533,8 @@ class PendaftaranView extends Pendaftaran
 		// End of Compare Root URL by Masino Sinaga, September 10, 2023
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->nim);
+        $this->setupLookupOptions($this->id_kegiatan);
         $this->setupLookupOptions($this->status);
 
         // Check modal
@@ -891,11 +893,52 @@ class PendaftaranView extends Pendaftaran
             $this->id_pendaftaran->ViewValue = $this->id_pendaftaran->CurrentValue;
 
             // nim
-            $this->nim->ViewValue = $this->nim->CurrentValue;
+            $curVal = strval($this->nim->CurrentValue);
+            if ($curVal != "") {
+                $this->nim->ViewValue = $this->nim->lookupCacheOption($curVal);
+                if ($this->nim->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->nim->Lookup->getTable()->Fields["nim"]->searchExpression(), "=", $curVal, $this->nim->Lookup->getTable()->Fields["nim"]->searchDataType(), "DB");
+                    $sqlWrk = $this->nim->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->nim->Lookup->renderViewRow($row);
+                        }
+                        $this->nim->ViewValue = $this->nim->displayValue($rows[0]);
+                    } else {
+                        $this->nim->ViewValue = $this->nim->CurrentValue;
+                    }
+                }
+            } else {
+                $this->nim->ViewValue = null;
+            }
 
             // id_kegiatan
-            $this->id_kegiatan->ViewValue = $this->id_kegiatan->CurrentValue;
-            $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->ViewValue, $this->id_kegiatan->formatPattern());
+            $curVal = strval($this->id_kegiatan->CurrentValue);
+            if ($curVal != "") {
+                $this->id_kegiatan->ViewValue = $this->id_kegiatan->lookupCacheOption($curVal);
+                if ($this->id_kegiatan->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchExpression(), "=", $curVal, $this->id_kegiatan->Lookup->getTable()->Fields["id_kegiatan"]->searchDataType(), "DB");
+                    $sqlWrk = $this->id_kegiatan->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->id_kegiatan->Lookup->renderViewRow($row);
+                        }
+                        $this->id_kegiatan->ViewValue = $this->id_kegiatan->displayValue($rows[0]);
+                    } else {
+                        $this->id_kegiatan->ViewValue = FormatNumber($this->id_kegiatan->CurrentValue, $this->id_kegiatan->formatPattern());
+                    }
+                }
+            } else {
+                $this->id_kegiatan->ViewValue = null;
+            }
 
             // status
             if (strval($this->status->CurrentValue) != "") {
@@ -958,6 +1001,10 @@ class PendaftaranView extends Pendaftaran
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_nim":
+                    break;
+                case "x_id_kegiatan":
+                    break;
                 case "x_status":
                     break;
                 default:

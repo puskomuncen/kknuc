@@ -648,6 +648,9 @@ class LaporanAkhirAdd extends LaporanAkhir
 // Get upload files
     protected function getUploadFiles(): void
     {
+        $this->file_laporan->Upload->Index = $this->FormIndex;
+        $this->file_laporan->Upload->uploadFile();
+        $this->file_laporan->CurrentValue = $this->file_laporan->Upload->FileName;
     }
 
     // Load default values
@@ -667,16 +670,6 @@ class LaporanAkhirAdd extends LaporanAkhir
                 $this->id_penempatan->Visible = false; // Disable update for API request
             } else {
                 $this->id_penempatan->setFormValue($val, true, $validate);
-            }
-        }
-
-        // Check field name 'file_laporan' before field var 'x_file_laporan'
-        $val = $this->getFormValue("file_laporan", null) ?? $this->getFormValue("x_file_laporan", null);
-        if (!$this->file_laporan->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->file_laporan->Visible = false; // Disable update for API request
-            } else {
-                $this->file_laporan->setFormValue($val);
             }
         }
 
@@ -702,13 +695,13 @@ class LaporanAkhirAdd extends LaporanAkhir
 
         // Check field name 'id_laporan' first before field var 'x_id_laporan'
         $val = $this->hasFormValue("id_laporan") ? $this->getFormValue("id_laporan") : $this->getFormValue("x_id_laporan");
+        $this->getUploadFiles(); // Get upload files
     }
 
     // Restore form values
     public function restoreFormValues(): void
     {
         $this->id_penempatan->CurrentValue = $this->id_penempatan->FormValue;
-        $this->file_laporan->CurrentValue = $this->file_laporan->FormValue;
         $this->nilai_dosen->CurrentValue = $this->nilai_dosen->FormValue;
         $this->nilai_instansi->CurrentValue = $this->nilai_instansi->FormValue;
     }
@@ -752,7 +745,8 @@ class LaporanAkhirAdd extends LaporanAkhir
         $this->rowSelected($row);
         $this->id_laporan->setDbValue($row['id_laporan']);
         $this->id_penempatan->setDbValue($row['id_penempatan']);
-        $this->file_laporan->setDbValue($row['file_laporan']);
+        $this->file_laporan->Upload->DbValue = $row['file_laporan'];
+        $this->file_laporan->setDbValue($this->file_laporan->Upload->DbValue);
         $this->nilai_dosen->setDbValue($row['nilai_dosen']);
         $this->nilai_instansi->setDbValue($row['nilai_instansi']);
     }
@@ -825,7 +819,11 @@ class LaporanAkhirAdd extends LaporanAkhir
             $this->id_penempatan->ViewValue = FormatNumber($this->id_penempatan->ViewValue, $this->id_penempatan->formatPattern());
 
             // file_laporan
-            $this->file_laporan->ViewValue = $this->file_laporan->CurrentValue;
+            if (!IsEmpty($this->file_laporan->Upload->DbValue)) {
+                $this->file_laporan->ViewValue = $this->file_laporan->Upload->DbValue;
+            } else {
+                $this->file_laporan->ViewValue = "";
+            }
 
             // nilai_dosen
             $this->nilai_dosen->ViewValue = $this->nilai_dosen->CurrentValue;
@@ -840,6 +838,7 @@ class LaporanAkhirAdd extends LaporanAkhir
 
             // file_laporan
             $this->file_laporan->HrefValue = "";
+            $this->file_laporan->ExportHrefValue = $this->file_laporan->UploadPath . $this->file_laporan->Upload->DbValue;
 
             // nilai_dosen
             $this->nilai_dosen->HrefValue = "";
@@ -857,8 +856,20 @@ class LaporanAkhirAdd extends LaporanAkhir
 
             // file_laporan
             $this->file_laporan->setupEditAttributes();
-            $this->file_laporan->EditValue = !$this->file_laporan->Raw ? HtmlDecode($this->file_laporan->CurrentValue) : $this->file_laporan->CurrentValue;
-            $this->file_laporan->PlaceHolder = RemoveHtml($this->file_laporan->caption());
+            if (!IsEmpty($this->file_laporan->Upload->DbValue)) {
+                $this->file_laporan->EditValue = $this->file_laporan->Upload->DbValue;
+            } else {
+                $this->file_laporan->EditValue = "";
+            }
+            if (!IsEmpty($this->file_laporan->CurrentValue)) {
+                $this->file_laporan->Upload->FileName = $this->file_laporan->CurrentValue;
+            }
+            if (!Config("CREATE_UPLOAD_FILE_ON_COPY")) {
+                $this->file_laporan->Upload->DbValue = null;
+            }
+            if ($this->isShow() || $this->isCopy()) {
+                $this->file_laporan->Upload->setupTempDirectory();
+            }
 
             // nilai_dosen
             $this->nilai_dosen->setupEditAttributes();
@@ -883,6 +894,7 @@ class LaporanAkhirAdd extends LaporanAkhir
 
             // file_laporan
             $this->file_laporan->HrefValue = "";
+            $this->file_laporan->ExportHrefValue = $this->file_laporan->UploadPath . $this->file_laporan->Upload->DbValue;
 
             // nilai_dosen
             $this->nilai_dosen->HrefValue = "";
@@ -917,7 +929,7 @@ class LaporanAkhirAdd extends LaporanAkhir
                 $this->id_penempatan->addErrorMessage($this->id_penempatan->getErrorMessage(false));
             }
             if ($this->file_laporan->Visible && $this->file_laporan->Required) {
-                if (!$this->file_laporan->IsDetailKey && IsEmpty($this->file_laporan->FormValue)) {
+                if ($this->file_laporan->Upload->FileName == "" && !$this->file_laporan->Upload->KeepFile) {
                     $this->file_laporan->addErrorMessage(str_replace("%s", $this->file_laporan->caption(), $this->file_laporan->RequiredErrorMessage));
                 }
             }
@@ -955,6 +967,13 @@ class LaporanAkhirAdd extends LaporanAkhir
     {
         // Get new row
         $newRow = $this->getAddRow();
+        if ($this->file_laporan->Visible && !$this->file_laporan->Upload->KeepFile) {
+            if (!IsEmpty($this->file_laporan->Upload->FileName)) {
+                $this->file_laporan->Upload->DbValue = null;
+                FixUploadFileNames($this->file_laporan);
+                $this->file_laporan->setDbValueDef($newRow, $this->file_laporan->Upload->FileName, false);
+            }
+        }
 
         // Update current values
         $this->Fields->setCurrentValues($newRow);
@@ -968,6 +987,13 @@ class LaporanAkhirAdd extends LaporanAkhir
         if ($insertRow) {
             $addRow = $this->insert($newRow);
             if ($addRow) {
+                if ($this->file_laporan->Visible && !$this->file_laporan->Upload->KeepFile) {
+                    $this->file_laporan->Upload->DbValue = null;
+                    if (!SaveUploadFiles($this->file_laporan, $newRow['file_laporan'], false)) {
+                        $this->setFailureMessage($this->language->phrase("UploadError7"));
+                        return false;
+                    }
+                }
             } elseif (!IsEmpty($this->DbErrorMessage)) { // Show database error
                 $this->setFailureMessage($this->DbErrorMessage);
             }
@@ -1009,7 +1035,14 @@ class LaporanAkhirAdd extends LaporanAkhir
         $this->id_penempatan->setDbValueDef($newRow, $this->id_penempatan->CurrentValue, false);
 
         // file_laporan
-        $this->file_laporan->setDbValueDef($newRow, $this->file_laporan->CurrentValue, false);
+        if ($this->file_laporan->Visible && !$this->file_laporan->Upload->KeepFile) {
+            if ($this->file_laporan->Upload->FileName == "") {
+                $newRow['file_laporan'] = null;
+            } else {
+                FixUploadTempFileNames($this->file_laporan);
+                $newRow['file_laporan'] = $this->file_laporan->Upload->FileName;
+            }
+        }
 
         // nilai_dosen
         $this->nilai_dosen->setDbValueDef($newRow, $this->nilai_dosen->CurrentValue, false);
