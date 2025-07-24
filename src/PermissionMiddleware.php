@@ -123,7 +123,10 @@ class PermissionMiddleware
      */
     protected function setFailureMessage(): void
     {
-        FlashBag()->add("failure", DeniedMessage());
+        $flashBag = FlashBag();
+        if (implode("", $flashBag->peek("failure")) != DeniedMessage()) {
+            $flashBag->add("failure", DeniedMessage());
+        }
     }
 
     /**

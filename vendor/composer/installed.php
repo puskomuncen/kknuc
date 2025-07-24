@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'doctrine/dbal' => array(
-            'pretty_version' => '4.3.0',
-            'version' => '4.3.0.0',
-            'reference' => '5fe09532be619202d59c70956c6fb20e97933ee3',
+            'pretty_version' => '4.3.1',
+            'version' => '4.3.1.0',
+            'reference' => 'ac336c95ea9e13433d56ca81c308b39db0e1a2a7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/dbal',
             'aliases' => array(),
@@ -418,7 +418,7 @@
         'maximebf/debugbar' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v2.2.2',
+                0 => 'v2.2.4',
             ),
         ),
         'mobiledetect/mobiledetectlib' => array(
@@ -548,9 +548,9 @@
             'dev_requirement' => false,
         ),
         'php-debugbar/php-debugbar' => array(
-            'pretty_version' => 'v2.2.2',
-            'version' => '2.2.2.0',
-            'reference' => 'cd618a4181186ea627903863164394ed83de097b',
+            'pretty_version' => 'v2.2.4',
+            'version' => '2.2.4.0',
+            'reference' => '3146d04671f51f69ffec2a4207ac3bdcf13a9f35',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-debugbar/php-debugbar',
             'aliases' => array(),

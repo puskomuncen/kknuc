@@ -127,7 +127,7 @@ $CONFIG = [
     "EXIT_IMPERSONATION_TEMPLATE" => '<div><a title="%s" class="exit-user" data-ew-action="submit" data-action="switchuser" data-method="R" data-select="S" data-data="{&quot;switchuser&quot;:&quot;_exit&quot;}">%s</a></div>',
 
     // Environment
-    "ENVIRONMENT" => "development",
+    "ENVIRONMENT" => "production",
 
     // Container
     "COMPILE_CONTAINER" => false,

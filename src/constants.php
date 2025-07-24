@@ -16,7 +16,7 @@ define(PROJECT_NAMESPACE . "IS_WINDOWS", strtolower(substr(PHP_OS, 0, 3)) === "w
 define(PROJECT_NAMESPACE . "PATH_DELIMITER", IS_WINDOWS ? "\\" : "/"); // Physical path delimiter
 
 // Product version
-define(PROJECT_NAMESPACE . "PRODUCT_VERSION", "25.11.0");
+define(PROJECT_NAMESPACE . "PRODUCT_VERSION", "25.12.0");
 
 // Project
 define(PROJECT_NAMESPACE . "PROJECT_NAME", "kkndanpkl"); // Project name

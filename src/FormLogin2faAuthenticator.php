@@ -84,6 +84,10 @@ class FormLogin2faAuthenticator extends AbstractLoginFormAuthenticator
         if ($this->security->lastUrl() == $request->getUri()) {
             $this->security->removelastUrl();
         }
+        if ($lastUrl = $this->security->lastUrl()) {
+            $this->security->removelastUrl();
+            return new JsonResponse(["success" => true, "url" => $lastUrl]);
+        }
         return new JsonResponse(["success" => true]);
     }
 

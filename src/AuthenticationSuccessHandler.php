@@ -19,10 +19,10 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
     {
         $routeName = RouteName();
         $language = Language();
+        $session = $request->getSession();
 
         // Login check (for login link)
         if ($routeName == "login_check") {
-            $session = $request->getSession();
             $flash = $session->getFlashBag();
             $user = $token->getUser();
             if (
@@ -55,7 +55,7 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
         } elseif ($routeName == "login1fa") {
             // If JSON response expected
             if (IsJsonResponse()) {
-                return new JsonResponse(["url" => UrlFor("login")]);
+                return new JsonResponse(["url" => $this->determineTargetUrl($request)]);
             }
         } elseif ($routeName == "loginldap") {
             // If JSON response expected
@@ -68,5 +68,14 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 
         // Return empty response => Continue to the original route
         return new Response();
+    }
+
+    protected function determineTargetUrl(Request $request): string
+    {
+        $security = Security();
+        if ($targetUrl = $security->lastUrl()) {
+            return $targetUrl;
+        }
+        return UrlFor("login");
     }
 }

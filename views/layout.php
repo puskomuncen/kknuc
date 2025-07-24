@@ -24,14 +24,14 @@ $basePath = BasePath(true);
 </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<?= $basePath ?>css/select2.min.css?v=25.11.11">
-<link rel="stylesheet" href="<?= $basePath ?>css/select2-bootstrap5.min.css?v=25.11.11">
-<link rel="stylesheet" href="<?= $basePath ?><?= Config("FONT_AWESOME_STYLESHEET") ?>?v=25.11.11">
-<link rel="stylesheet" href="<?= $basePath ?>css/jquery.overlayScrollbars.css?v=25.11.11">
+<link rel="stylesheet" href="<?= $basePath ?>css/select2.min.css?v=25.12.0">
+<link rel="stylesheet" href="<?= $basePath ?>css/select2-bootstrap5.min.css?v=25.12.0">
+<link rel="stylesheet" href="<?= $basePath ?><?= Config("FONT_AWESOME_STYLESHEET") ?>?v=25.12.0">
+<link rel="stylesheet" href="<?= $basePath ?>css/jquery.overlayScrollbars.css?v=25.12.0">
 <?php // Begin of modification by Masino Sinaga, September 7, 2023 ?>
 <link rel="stylesheet" href="<?= $basePath ?><?= AutoVersion("adminlte32/css/" . CssFile("adminlte.css") . ""); ?>">
 <?php // End of modification by Masino Sinaga, September 7, 2023 ?>
-<link rel="stylesheet" href="<?= $basePath ?><?= CssFile(Config("PROJECT_STYLESHEET_FILENAME")) ?>?v=25.11.11">
+<link rel="stylesheet" href="<?= $basePath ?><?= CssFile(Config("PROJECT_STYLESHEET_FILENAME")) ?>?v=25.12.0">
 <?php // === Begin modification of Alertify Notification, by Masino Sinaga, September 9, 2023  === \\ ?>
 <?php if($Language->phrase("dir")=="rtl") { ?>
 <link rel="stylesheet" href="<?= $basePath ?>plugins/alertifyjs/css/alertify.rtl.min.css?v=1694586875" id="alertify_style">
@@ -57,7 +57,7 @@ $basePath = BasePath(true);
 <link rel="stylesheet" href="<?= $basePath ?>plugins/language-selector-combobox/css/msdropdown/flags.css?v=1694586875">
 <?php } ?>
 <?php // === End modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
-<script<?= Nonce() ?> data-pace-options='<?= json_encode(Config("PACE_OPTIONS")) ?>' src="<?= $basePath ?>js/pace.js?v=25.11.11"></script><!-- Single quotes for data-pace-options -->
+<script<?= Nonce() ?> data-pace-options='<?= json_encode(Config("PACE_OPTIONS")) ?>' src="<?= $basePath ?>js/pace.js?v=25.12.0"></script><!-- Single quotes for data-pace-options -->
 <?php // === Begin modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
 <script<?= Nonce() ?> src="<?= $basePath ?><?= AutoVersion("js/masinoewcore.js"); ?>"></script>
 <?php // === End modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
@@ -66,21 +66,21 @@ var document_title = document.title;
 var $rowindex$ = null;
 Object.assign(ew, <?= json_encode(ConfigClientVars()) ?>, <?= json_encode(GlobalClientVars()) ?>);
 loadjs.done("clientvars"); // Write tab ID cookie
-loadjs(ew.PATH_BASE + "jquery/jquery.min.js?v=25.11.11", "jquery");
-loadjs(ew.PATH_BASE + "js/popper.min.js?v=25.11.11", "popper");
-loadjs(ew.PATH_BASE + "js/luxon.min.js?v=25.11.11", "luxon");
+loadjs(ew.PATH_BASE + "jquery/jquery.min.js?v=25.12.0", "jquery");
+loadjs(ew.PATH_BASE + "js/popper.min.js?v=25.12.0", "popper");
+loadjs(ew.PATH_BASE + "js/luxon.min.js?v=25.12.0", "luxon");
 loadjs([
-    ew.PATH_BASE + "js/ua-parser.min.js?v=25.11.11",
-    ew.PATH_BASE + "js/purify.min.js?v=25.11.11",
-    ew.PATH_BASE + "js/cropper.min.js?v=25.11.11",
-    ew.PATH_BASE + "jquery/load-image.all.min.js?v=25.11.11"
+    ew.PATH_BASE + "js/ua-parser.min.js?v=25.12.0",
+    ew.PATH_BASE + "js/purify.min.js?v=25.12.0",
+    ew.PATH_BASE + "js/cropper.min.js?v=25.12.0",
+    ew.PATH_BASE + "jquery/load-image.all.min.js?v=25.12.0"
 ], "others");
-loadjs([ew.PATH_BASE + "js/sweetalert2.min.js?v=25.11.11", ew.PATH_BASE + "css/sweetalert2.min.css?v=25.11.11"], "swal");
+loadjs([ew.PATH_BASE + "js/sweetalert2.min.js?v=25.12.0", ew.PATH_BASE + "css/sweetalert2.min.css?v=25.12.0"], "swal");
 <?= $Language->toJson() ?>
 ew.vars = <?= json_encode(GetClientVar()) ?>;
-ew.ready(["wrapper", "jquery"], ew.PATH_BASE + "jquery/jsrender.min.js?v=25.11.11", "jsrender", ew.renderJsTemplates);
-ew.ready("jsrender", ew.PATH_BASE + "jquery/jquery.overlayScrollbars.min.js?v=25.11.11", "scrollbars"); // Init sidebar scrollbars after rendering menu
-ew.ready("jquery", ew.PATH_BASE + "jquery/jquery-ui.min.js?v=25.11.11", "widget");
+ew.ready(["wrapper", "jquery"], ew.PATH_BASE + "jquery/jsrender.min.js?v=25.12.0", "jsrender", ew.renderJsTemplates);
+ew.ready("jsrender", ew.PATH_BASE + "jquery/jquery.overlayScrollbars.min.js?v=25.12.0", "scrollbars"); // Init sidebar scrollbars after rendering menu
+ew.ready("jquery", ew.PATH_BASE + "jquery/jquery-ui.min.js?v=25.12.0", "widget");
 <?php // === Begin modification of Language Selector and Alertify Javascript, by Masino Sinaga, September 11, 2020  === \\ ?>
 ew.ready("jquery", ew.PATH_BASE + "plugins/language-selector-combobox/js/msdropdown/jquery.dd.js?v=1694586875", "msdropdown");
 ew.ready("jquery", ew.PATH_BASE + "plugins/alertifyjs/alertify.min.js?v=1694586875", "alertifyjs");
@@ -89,27 +89,27 @@ ew.ready("jquery", ew.PATH_BASE + "plugins/alertifyjs/alertify.min.js?v=16945868
 <?php include_once "views/menu.php"; ?>
 <script<?= Nonce() ?>>
 var cssfiles = [
-    ew.PATH_BASE + "css/jquery.fileupload.css?v=25.11.11",
-    ew.PATH_BASE + "css/jquery.fileupload-ui.css?v=25.11.11",
-    ew.PATH_BASE + "css/cropper.min.css?v=25.11.11"
+    ew.PATH_BASE + "css/jquery.fileupload.css?v=25.12.0",
+    ew.PATH_BASE + "css/jquery.fileupload-ui.css?v=25.12.0",
+    ew.PATH_BASE + "css/cropper.min.css?v=25.12.0"
 ];
-cssfiles.push(ew.PATH_BASE + "colorbox/colorbox.css?v=25.11.11");
+cssfiles.push(ew.PATH_BASE + "colorbox/colorbox.css?v=25.12.0");
 loadjs(cssfiles, "css");
 var cssjs = [];
 <?php foreach (array_merge(Config("STYLESHEET_FILES"), Config("JAVASCRIPT_FILES")) as $file) { // External Stylesheets and JavaScripts ?>
-cssjs.push("<?= (IsRemote($file) ? "" : BasePath(true)) . $file ?>?v=25.11.11");
+cssjs.push("<?= (IsRemote($file) ? "" : BasePath(true)) . $file ?>?v=25.12.0");
 <?php } ?>
 var jqueryjs = [
-    ew.PATH_BASE + "jquery/select2.full.min.js?v=25.11.11",
-    ew.PATH_BASE + "jquery/jqueryfileupload.min.js?v=25.11.11",
-    ew.PATH_BASE + "jquery/typeahead.jquery.min.js?v=25.11.11"
+    ew.PATH_BASE + "jquery/select2.full.min.js?v=25.12.0",
+    ew.PATH_BASE + "jquery/jqueryfileupload.min.js?v=25.12.0",
+    ew.PATH_BASE + "jquery/typeahead.jquery.min.js?v=25.12.0"
 ];
-jqueryjs.push(ew.PATH_BASE + "jquery/pStrength.jquery.min.js?v=25.11.11");
-jqueryjs.push(ew.PATH_BASE + "jquery/pGenerator.jquery.min.js?v=25.11.11");
-jqueryjs.push(ew.PATH_BASE + "colorbox/jquery.colorbox.min.js?v=25.11.11");
-jqueryjs.push(ew.PATH_BASE + "js/pdfobject.min.js?v=25.11.11");
-ew.ready(["jquery", "dom", "popper"], ew.PATH_BASE + "bootstrap5/js/bootstrap.min.js?v=25.11.11", "bootstrap"); // Bootstrap
-ew.ready("popper", [ew.PATH_BASE + "js/tippy.umd.min.js?v=25.11.11", ew.PATH_BASE + "css/tippy.css?v=25.11.11",], "tippy"); // Tippy
+jqueryjs.push(ew.PATH_BASE + "jquery/pStrength.jquery.min.js?v=25.12.0");
+jqueryjs.push(ew.PATH_BASE + "jquery/pGenerator.jquery.min.js?v=25.12.0");
+jqueryjs.push(ew.PATH_BASE + "colorbox/jquery.colorbox.min.js?v=25.12.0");
+jqueryjs.push(ew.PATH_BASE + "js/pdfobject.min.js?v=25.12.0");
+ew.ready(["jquery", "dom", "popper"], ew.PATH_BASE + "bootstrap5/js/bootstrap.min.js?v=25.12.0", "bootstrap"); // Bootstrap
+ew.ready("popper", [ew.PATH_BASE + "js/tippy.umd.min.js?v=25.12.0", ew.PATH_BASE + "css/tippy.css?v=25.12.0",], "tippy"); // Tippy
 ew.ready("bootstrap", ew.PATH_BASE + "<?= AutoVersion("adminlte32/js/adminlte.js"); ?>", "adminlte"); // AdminLTE (After Bootstrap)
 ew.ready(["jquery", "widget", "msdropdown"], [jqueryjs], "jqueryjs");
 ew.ready(["bootstrap", "adminlte", "jqueryjs", "luxon", "others"], ew.PATH_BASE + "<?= AutoVersion("js/masinoew.js"); ?>", "makerjs");
@@ -120,10 +120,10 @@ ew.ready("makerjs", [
 ], "head");
 </script>
 <script<?= Nonce() ?>>
-loadjs(ew.PATH_BASE + "css/<?= CssFile("tempus-dominus.css") ?>?v=25.11.0");
+loadjs(ew.PATH_BASE + "css/<?= CssFile("tempus-dominus.css") ?>?v=25.12.0");
 ew.ready("head", [
-    ew.PATH_BASE + "js/tempus-dominus.min.js?v=25.11.0",
-    ew.PATH_BASE + "js/ewdatetimepicker.min.js?v=25.11.0"
+    ew.PATH_BASE + "js/tempus-dominus.min.js?v=25.12.0",
+    ew.PATH_BASE + "js/ewdatetimepicker.min.js?v=25.12.0"
 ], "datetimepicker");
 </script>
 <script>
@@ -144,7 +144,7 @@ ew.ready("head", [
 ew.TINYMCE_VERSION = 6;
 </script>
 <script<?= Nonce() ?>>
-ew.ready("head", [ew.PATH_BASE + "tinymce/tinymce.min.js?v=25.11.0", ew.PATH_BASE + "js/eweditor.js?v=25.11.0"], "editor");
+ew.ready("head", [ew.PATH_BASE + "tinymce/tinymce.min.js?v=25.12.0", ew.PATH_BASE + "js/eweditor.js?v=25.12.0"], "editor");
 </script>
 <style<?= Nonce() ?>>
 .tox-promotion, .tox-statusbar__branding {
@@ -154,8 +154,8 @@ ew.ready("head", [ew.PATH_BASE + "tinymce/tinymce.min.js?v=25.11.0", ew.PATH_BAS
 <script<?= Nonce() ?>>
 // Load color picker (requires "jquery" and "bootstrap", see layout.php for the ids)
 ew.ready(["jquery", "bootstrap"], [[
-    ew.PATH_BASE + "plugins/colorpicker/css/bootstrap-colorpicker.min.css?v=25.11.0",
-    ew.PATH_BASE + "plugins/colorpicker/js/bootstrap-colorpicker.min.js?v=25.11.0"
+    ew.PATH_BASE + "plugins/colorpicker/css/bootstrap-colorpicker.min.css?v=25.12.0",
+    ew.PATH_BASE + "plugins/colorpicker/js/bootstrap-colorpicker.min.js?v=25.12.0"
 ]], "colorpicker");
 // Color picker options
 ew.colorPickerOptions = { format: 'hex', autoHexInputFallback: true };
@@ -340,7 +340,7 @@ loadjs.ready("alertifyjs", function () {
 <link rel="shortcut icon" type="image/x-icon" href="<?= BasePath() ?>/favicon.ico">
 <link rel="icon" type="image/x-icon" href="<?= BasePath() ?>/favicon.ico">
 <?= DebugBarRenderer()?->renderHead() ?>
-<meta name="generator" content="PHPMaker 2025.11.0">
+<meta name="generator" content="PHPMaker 2025.12.0">
 </head>
 <body class="<?= Config("BODY_CLASS") ?>" style="<?= Config("BODY_STYLE") ?>">
 <?php if (@!$SkipHeaderFooter) { ?>

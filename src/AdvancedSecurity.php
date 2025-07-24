@@ -643,10 +643,7 @@ class AdvancedSecurity
     public function saveLastUrl(): void
     {
         $url = Request()->getUri();
-        if ($this->lastUrl() == $url) {
-            $url = "";
-        }
-        if (!IsModal()) {
+        if (!IsModal() && $url != UrlFor("login")) {
             $this->saveTargetPath($this->session, "main", $url);
         }
     }

@@ -1,5 +1,5 @@
 /*!
- * Core JavaScript for PHPMaker v2025.11.0
+ * Core JavaScript for PHPMaker v2025.12.0
  * Copyright (c) e.World Technology Limited. All rights reserved.
  */
 var ew = (function () {

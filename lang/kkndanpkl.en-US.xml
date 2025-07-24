@@ -1,4 +1,4 @@
-<ew-language date="2025/7/18" id="en-US" author="e.World Technology Limited">
+<ew-language date="2025/7/24" id="en-US" author="e.World Technology Limited">
   <project>
     <phrase id="bodytitle" value="Kkn Uncen" />
     <phrase id="footertext" value="&amp;copy;2025 John E. Samori. All rights reserved." />
@@ -487,7 +487,7 @@
         <phrase id="fldcaption" value="id kegiatan" />
       </field>
       <field id="nama_kegiatan">
-        <phrase id="fldcaption" value="nama kegiatan" />
+        <phrase id="fldcaption" value="Nama Kegiatan" />
         <phrase id="fldtagvalue1" value="KKN" />
         <phrase id="fldtagcaption1" value="KKN" />
         <phrase id="fldtagvalue2" value="PKL" />
@@ -496,20 +496,20 @@
         <phrase id="fldtagcaption3" value="Magang" />
       </field>
       <field id="tahun">
-        <phrase id="fldcaption" value="tahun" />
+        <phrase id="fldcaption" value="Tahun" />
       </field>
       <field id="semester">
-        <phrase id="fldcaption" value="semester" />
+        <phrase id="fldcaption" value="Semester" />
         <phrase id="fldtagvalue1" value="Ganjil" />
         <phrase id="fldtagcaption1" value="Ganjil" />
         <phrase id="fldtagvalue2" value="Genap" />
         <phrase id="fldtagcaption2" value="Genap" />
       </field>
       <field id="tanggal_mulai">
-        <phrase id="fldcaption" value="tanggal mulai" />
+        <phrase id="fldcaption" value="Tanggal Mulai" />
       </field>
       <field id="tanggal_selesai">
-        <phrase id="fldcaption" value="tanggal selesai" />
+        <phrase id="fldcaption" value="Tanggal Selesai" />
       </field>
     </table>
     <table id="laporan_akhir">
@@ -521,13 +521,13 @@
         <phrase id="fldcaption" value="id penempatan" />
       </field>
       <field id="file_laporan">
-        <phrase id="fldcaption" value="file laporan" />
+        <phrase id="fldcaption" value="File Laporan" />
       </field>
       <field id="nilai_dosen">
-        <phrase id="fldcaption" value="nilai dosen" />
+        <phrase id="fldcaption" value="Nilai dosen" />
       </field>
       <field id="nilai_instansi">
-        <phrase id="fldcaption" value="nilai instansi" />
+        <phrase id="fldcaption" value="Nilai Instansi" />
       </field>
     </table>
     <table id="logbook">
@@ -536,16 +536,16 @@
         <phrase id="fldcaption" value="id logbook" />
       </field>
       <field id="id_penempatan">
-        <phrase id="fldcaption" value="id penempatan" />
+        <phrase id="fldcaption" value="id Penempatan" />
       </field>
       <field id="tanggal">
-        <phrase id="fldcaption" value="tanggal" />
+        <phrase id="fldcaption" value="Tanggal" />
       </field>
       <field id="kegiatan">
-        <phrase id="fldcaption" value="kegiatan" />
+        <phrase id="fldcaption" value="Kegiatan" />
       </field>
       <field id="validasi_dosen">
-        <phrase id="fldcaption" value="validasi dosen" />
+        <phrase id="fldcaption" value="Validasi Dosen" />
         <phrase id="fldtagvalue1" value="1" />
         <phrase id="fldtagcaption1" value="Yes" />
         <phrase id="fldtagvalue2" value="0" />
@@ -555,25 +555,25 @@
     <table id="mahasiswa">
       <phrase id="tblcaption" value="mahasiswa" />
       <field id="nim">
-        <phrase id="fldcaption" value="nim" />
+        <phrase id="fldcaption" value="NIM" />
       </field>
       <field id="nama">
-        <phrase id="fldcaption" value="nama" />
+        <phrase id="fldcaption" value="Nama" />
       </field>
       <field id="prodi">
-        <phrase id="fldcaption" value="prodi" />
+        <phrase id="fldcaption" value="Program_Studi" />
       </field>
       <field id="fakultas">
-        <phrase id="fldcaption" value="fakultas" />
+        <phrase id="fldcaption" value="Fakultas" />
       </field>
       <field id="angkatan">
-        <phrase id="fldcaption" value="angkatan" />
+        <phrase id="fldcaption" value="Angkatan" />
       </field>
       <field id="email">
         <phrase id="fldcaption" value="email" />
       </field>
       <field id="no_hp">
-        <phrase id="fldcaption" value="no hp" />
+        <phrase id="fldcaption" value="No HP" />
       </field>
     </table>
     <table id="pendaftaran">
@@ -582,13 +582,13 @@
         <phrase id="fldcaption" value="id pendaftaran" />
       </field>
       <field id="nim">
-        <phrase id="fldcaption" value="nim" />
+        <phrase id="fldcaption" value="NIM" />
       </field>
       <field id="id_kegiatan">
-        <phrase id="fldcaption" value="id kegiatan" />
+        <phrase id="fldcaption" value="Id Kegiatan" />
       </field>
       <field id="status">
-        <phrase id="fldcaption" value="status" />
+        <phrase id="fldcaption" value="Status" />
         <phrase id="fldtagvalue1" value="Diajukan" />
         <phrase id="fldtagcaption1" value="Diajukan" />
         <phrase id="fldtagvalue2" value="Disetujui" />
@@ -597,7 +597,7 @@
         <phrase id="fldtagcaption3" value="Ditolak" />
       </field>
       <field id="tanggal_daftar">
-        <phrase id="fldcaption" value="tanggal daftar" />
+        <phrase id="fldcaption" value="Tanggal Daftar" />
       </field>
     </table>
     <table id="penempatan">
@@ -612,10 +612,10 @@
         <phrase id="fldcaption" value="id instansi" />
       </field>
       <field id="dosen_pembimbing">
-        <phrase id="fldcaption" value="dosen pembimbing" />
+        <phrase id="fldcaption" value="Dosen Pembimbing" />
       </field>
       <field id="status">
-        <phrase id="fldcaption" value="status" />
+        <phrase id="fldcaption" value="Status" />
         <phrase id="fldtagvalue1" value="Aktif" />
         <phrase id="fldtagcaption1" value="Aktif" />
         <phrase id="fldtagvalue2" value="Selesai" />

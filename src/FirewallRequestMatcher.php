@@ -4,14 +4,13 @@ namespace PHPMaker2025\kkndanpkl;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
-use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 /**
  * Checks if the Request requires login
  */
 class FirewallRequestMatcher implements RequestMatcherInterface
 {
-    use TargetPathTrait;
+    private ?int $requestId = null;
 
     /**
      * Matches request for firewall
@@ -53,13 +52,12 @@ class FirewallRequestMatcher implements RequestMatcherInterface
                 $match = true;
             }
         }
-        if ($match && !$security->isLoggedIn()) { // Save last URL if not logged in
-            $session = $request->getSession();
-            $uri = $request->getUri();
-            if ($this->getTargetPath($session, "main") != $uri) {
-                $this->saveTargetPath($session, "main", $uri);
-            } else { // A loop
-                $this->removeTargetPath($session, "main");
+        if ($match && !IsAuthenticated()) { // Save last URL if not authenticated
+            if ($this->requestId != spl_object_id($request) && $request->getUri() == $security->lastUrl()) {
+                $security->removeLastUrl();
+            } else {
+                $this->requestId = spl_object_id($request);
+                $security->saveLastUrl();
             }
         }
         return $match;
