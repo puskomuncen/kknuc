@@ -29,7 +29,7 @@ return [
                 'memory' => [
                     'users' => [
                         'admin' => [
-                            'password' => '$2y$15$TiIre0XeoHr3FVi1qyGym.sT/vRs3CXyyjyH3QBf5GnhRS4HtAvdC',
+                            'password' => '$2y$15$a35pMTJXe8ujP2AvgJwqGe.QeTXvwerKe96A1zcQJzONKzT9RmGRW',
                             'roles' => [
                                 'ROLE_SUPER_ADMIN'
                             ],

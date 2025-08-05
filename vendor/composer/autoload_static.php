@@ -221,8 +221,8 @@ class ComposerStaticInit2fdf95d36ccb1bb9772cdd265c8b2722
         ),
         'Tuupola\\Middleware\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tuupola/callable-handler/src',
-            1 => __DIR__ . '/..' . '/hkvstore/cors-middleware/src',
+            0 => __DIR__ . '/..' . '/hkvstore/cors-middleware/src',
+            1 => __DIR__ . '/..' . '/tuupola/callable-handler/src',
         ),
         'Tuupola\\Http\\Factory\\' => 
         array (
@@ -463,8 +463,8 @@ class ComposerStaticInit2fdf95d36ccb1bb9772cdd265c8b2722
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -566,9 +566,9 @@ class ComposerStaticInit2fdf95d36ccb1bb9772cdd265c8b2722
         ),
         'Illuminate\\Support\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/macroable',
+            0 => __DIR__ . '/..' . '/illuminate/collections',
             1 => __DIR__ . '/..' . '/illuminate/conditionable',
-            2 => __DIR__ . '/..' . '/illuminate/collections',
+            2 => __DIR__ . '/..' . '/illuminate/macroable',
             3 => __DIR__ . '/..' . '/illuminate/support',
         ),
         'Illuminate\\Filesystem\\' => 
