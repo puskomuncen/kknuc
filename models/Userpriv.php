@@ -292,7 +292,10 @@ class Userpriv extends Userlevels
         // Set up allowed table list
         foreach ($ar as $t) {
             if ($t[3]) { // Allowed
-                $tempPriv = $this->security->getUserLevelPrivEx($t[4] . $t[0], $this->security->CurrentUserLevelID);
+                $tempPriv = 0;
+                foreach ($this->security->UserLevelIDs as $userLevelId) {
+                    $tempPriv |= $this->security->getUserLevelPrivEx($t[4] . $t[0], $userLevelId);
+                }
                 if (($tempPriv & Allow::GRANT->value) == Allow::GRANT->value) { // Allow Grant
                     $this->TableList[] = array_merge($t, [$tempPriv]);
                 }

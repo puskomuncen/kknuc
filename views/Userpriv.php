@@ -162,5 +162,5 @@ loadjs.ready("load", function () {
 });
 </script>
 <script<?= Nonce() ?>>
-ew.ready(["tabulator", "load"], ew.PATH_BASE + "js/userpriv.min.js?v=25.12.8");
+ew.ready(["tabulator", "load"], ew.PATH_BASE + "js/userpriv.min.js?v=25.12.16");
 </script>

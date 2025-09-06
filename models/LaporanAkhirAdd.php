@@ -861,9 +861,6 @@ class LaporanAkhirAdd extends LaporanAkhir
             } else {
                 $this->file_laporan->EditValue = "";
             }
-            if (!IsEmpty($this->file_laporan->CurrentValue)) {
-                $this->file_laporan->Upload->FileName = $this->file_laporan->CurrentValue;
-            }
             if (!Config("CREATE_UPLOAD_FILE_ON_COPY")) {
                 $this->file_laporan->Upload->DbValue = null;
             }

@@ -193,13 +193,13 @@ class Languages extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Default->Lookup = new Lookup($this->Default, 'languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Default->Lookup = new Lookup($this->Default, 'Languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Default->Lookup = new Lookup($this->Default, 'languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Default->Lookup = new Lookup($this->Default, 'Languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Default->Lookup = new Lookup($this->Default, 'languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Default->Lookup = new Lookup($this->Default, 'Languages', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Default->OptionCount = 2;

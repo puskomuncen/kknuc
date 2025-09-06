@@ -720,6 +720,7 @@ AddListener(ConfigurationEvent::NAME, function (ConfigurationEvent $event) {
         "PDF_IMAGE_SCALE_FACTOR" => 1.53, // Scale factor
     ]);
 });
+
 // End of added by Masino Sinaga, September 20, 2023
 
 // Captcha

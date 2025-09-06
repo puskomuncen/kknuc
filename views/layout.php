@@ -24,14 +24,14 @@ $basePath = BasePath(true);
 </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<?= $basePath ?>css/select2.min.css?v=25.12.8">
-<link rel="stylesheet" href="<?= $basePath ?>css/select2-bootstrap5.min.css?v=25.12.8">
-<link rel="stylesheet" href="<?= $basePath ?><?= Config("FONT_AWESOME_STYLESHEET") ?>?v=25.12.8">
-<link rel="stylesheet" href="<?= $basePath ?>css/jquery.overlayScrollbars.css?v=25.12.8">
+<link rel="stylesheet" href="<?= $basePath ?>css/select2.min.css?v=25.12.16">
+<link rel="stylesheet" href="<?= $basePath ?>css/select2-bootstrap5.min.css?v=25.12.16">
+<link rel="stylesheet" href="<?= $basePath ?><?= Config("FONT_AWESOME_STYLESHEET") ?>?v=25.12.16">
+<link rel="stylesheet" href="<?= $basePath ?>css/jquery.overlayScrollbars.css?v=25.12.16">
 <?php // Begin of modification by Masino Sinaga, September 7, 2023 ?>
 <link rel="stylesheet" href="<?= $basePath ?><?= AutoVersion("adminlte32/css/" . CssFile("adminlte.css") . ""); ?>">
 <?php // End of modification by Masino Sinaga, September 7, 2023 ?>
-<link rel="stylesheet" href="<?= $basePath ?><?= CssFile(Config("PROJECT_STYLESHEET_FILENAME")) ?>?v=25.12.8">
+<link rel="stylesheet" href="<?= $basePath ?><?= CssFile(Config("PROJECT_STYLESHEET_FILENAME")) ?>?v=25.12.16">
 <?php // === Begin modification of Alertify Notification, by Masino Sinaga, September 9, 2023  === \\ ?>
 <?php if($Language->phrase("dir")=="rtl") { ?>
 <link rel="stylesheet" href="<?= $basePath ?>plugins/alertifyjs/css/alertify.rtl.min.css?v=1694586875" id="alertify_style">
@@ -57,7 +57,7 @@ $basePath = BasePath(true);
 <link rel="stylesheet" href="<?= $basePath ?>plugins/language-selector-combobox/css/msdropdown/flags.css?v=1694586875">
 <?php } ?>
 <?php // === End modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
-<script<?= Nonce() ?> data-pace-options='<?= json_encode(Config("PACE_OPTIONS")) ?>' src="<?= $basePath ?>js/pace.js?v=25.12.8"></script><!-- Single quotes for data-pace-options -->
+<script<?= Nonce() ?> data-pace-options='<?= json_encode(Config("PACE_OPTIONS")) ?>' src="<?= $basePath ?>js/pace.js?v=25.12.16"></script><!-- Single quotes for data-pace-options -->
 <?php // === Begin modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
 <script<?= Nonce() ?> src="<?= $basePath ?><?= AutoVersion("js/masinoewcore.js"); ?>"></script>
 <?php // === End modification by Masino Sinaga, September 9, 2023 ==- \\ ?>
@@ -66,21 +66,21 @@ var document_title = document.title;
 var $rowindex$ = null;
 Object.assign(ew, <?= json_encode(ConfigClientVars()) ?>, <?= json_encode(GlobalClientVars()) ?>);
 loadjs.done("clientvars"); // Write tab ID cookie
-loadjs(ew.PATH_BASE + "jquery/jquery.min.js?v=25.12.8", "jquery");
-loadjs(ew.PATH_BASE + "js/popper.min.js?v=25.12.8", "popper");
-loadjs(ew.PATH_BASE + "js/luxon.min.js?v=25.12.8", "luxon");
+loadjs(ew.PATH_BASE + "jquery/jquery.min.js?v=25.12.16", "jquery");
+loadjs(ew.PATH_BASE + "js/popper.min.js?v=25.12.16", "popper");
+loadjs(ew.PATH_BASE + "js/luxon.min.js?v=25.12.16", "luxon");
 loadjs([
-    ew.PATH_BASE + "js/ua-parser.min.js?v=25.12.8",
-    ew.PATH_BASE + "js/purify.min.js?v=25.12.8",
-    ew.PATH_BASE + "js/cropper.min.js?v=25.12.8",
-    ew.PATH_BASE + "jquery/load-image.all.min.js?v=25.12.8"
+    ew.PATH_BASE + "js/ua-parser.min.js?v=25.12.16",
+    ew.PATH_BASE + "js/purify.min.js?v=25.12.16",
+    ew.PATH_BASE + "js/cropper.min.js?v=25.12.16",
+    ew.PATH_BASE + "jquery/load-image.all.min.js?v=25.12.16"
 ], "others");
-loadjs([ew.PATH_BASE + "js/sweetalert2.min.js?v=25.12.8", ew.PATH_BASE + "css/sweetalert2.min.css?v=25.12.8"], "swal");
+loadjs([ew.PATH_BASE + "js/sweetalert2.min.js?v=25.12.16", ew.PATH_BASE + "css/sweetalert2.min.css?v=25.12.16"], "swal");
 <?= $Language->toJson() ?>
 ew.vars = <?= json_encode(GetClientVar()) ?>;
-ew.ready(["wrapper", "jquery"], ew.PATH_BASE + "jquery/jsrender.min.js?v=25.12.8", "jsrender", ew.renderJsTemplates);
-ew.ready("jsrender", ew.PATH_BASE + "jquery/jquery.overlayScrollbars.min.js?v=25.12.8", "scrollbars"); // Init sidebar scrollbars after rendering menu
-ew.ready("jquery", ew.PATH_BASE + "jquery/jquery-ui.min.js?v=25.12.8", "widget");
+ew.ready(["wrapper", "jquery"], ew.PATH_BASE + "jquery/jsrender.min.js?v=25.12.16", "jsrender", ew.renderJsTemplates);
+ew.ready("jsrender", ew.PATH_BASE + "jquery/jquery.overlayScrollbars.min.js?v=25.12.16", "scrollbars"); // Init sidebar scrollbars after rendering menu
+ew.ready("jquery", ew.PATH_BASE + "jquery/jquery-ui.min.js?v=25.12.16", "widget");
 <?php // === Begin modification of Language Selector and Alertify Javascript, by Masino Sinaga, September 11, 2020  === \\ ?>
 ew.ready("jquery", ew.PATH_BASE + "plugins/language-selector-combobox/js/msdropdown/jquery.dd.js?v=1694586875", "msdropdown");
 ew.ready("jquery", ew.PATH_BASE + "plugins/alertifyjs/alertify.min.js?v=1694586875", "alertifyjs");
@@ -89,27 +89,27 @@ ew.ready("jquery", ew.PATH_BASE + "plugins/alertifyjs/alertify.min.js?v=16945868
 <?php include_once "views/menu.php"; ?>
 <script<?= Nonce() ?>>
 var cssfiles = [
-    ew.PATH_BASE + "css/jquery.fileupload.css?v=25.12.8",
-    ew.PATH_BASE + "css/jquery.fileupload-ui.css?v=25.12.8",
-    ew.PATH_BASE + "css/cropper.min.css?v=25.12.8"
+    ew.PATH_BASE + "css/jquery.fileupload.css?v=25.12.16",
+    ew.PATH_BASE + "css/jquery.fileupload-ui.css?v=25.12.16",
+    ew.PATH_BASE + "css/cropper.min.css?v=25.12.16"
 ];
-cssfiles.push(ew.PATH_BASE + "colorbox/colorbox.css?v=25.12.8");
+cssfiles.push(ew.PATH_BASE + "colorbox/colorbox.css?v=25.12.16");
 loadjs(cssfiles, "css");
 var cssjs = [];
 <?php foreach (array_merge(Config("STYLESHEET_FILES"), Config("JAVASCRIPT_FILES")) as $file) { // External Stylesheets and JavaScripts ?>
-cssjs.push("<?= (IsRemote($file) ? "" : BasePath(true)) . $file ?>?v=25.12.8");
+cssjs.push("<?= (IsRemote($file) ? "" : BasePath(true)) . $file ?>?v=25.12.16");
 <?php } ?>
 var jqueryjs = [
-    ew.PATH_BASE + "jquery/select2.full.min.js?v=25.12.8",
-    ew.PATH_BASE + "jquery/jqueryfileupload.min.js?v=25.12.8",
-    ew.PATH_BASE + "jquery/typeahead.jquery.min.js?v=25.12.8"
+    ew.PATH_BASE + "jquery/select2.full.min.js?v=25.12.16",
+    ew.PATH_BASE + "jquery/jqueryfileupload.min.js?v=25.12.16",
+    ew.PATH_BASE + "jquery/typeahead.jquery.min.js?v=25.12.16"
 ];
-jqueryjs.push(ew.PATH_BASE + "jquery/pStrength.jquery.min.js?v=25.12.8");
-jqueryjs.push(ew.PATH_BASE + "jquery/pGenerator.jquery.min.js?v=25.12.8");
-jqueryjs.push(ew.PATH_BASE + "colorbox/jquery.colorbox.min.js?v=25.12.8");
-jqueryjs.push(ew.PATH_BASE + "js/pdfobject.min.js?v=25.12.8");
-ew.ready(["jquery", "dom", "popper"], ew.PATH_BASE + "bootstrap5/js/bootstrap.min.js?v=25.12.8", "bootstrap"); // Bootstrap
-ew.ready("popper", [ew.PATH_BASE + "js/tippy.umd.min.js?v=25.12.8", ew.PATH_BASE + "css/tippy.css?v=25.12.8",], "tippy"); // Tippy
+jqueryjs.push(ew.PATH_BASE + "jquery/pStrength.jquery.min.js?v=25.12.16");
+jqueryjs.push(ew.PATH_BASE + "jquery/pGenerator.jquery.min.js?v=25.12.16");
+jqueryjs.push(ew.PATH_BASE + "colorbox/jquery.colorbox.min.js?v=25.12.16");
+jqueryjs.push(ew.PATH_BASE + "js/pdfobject.min.js?v=25.12.16");
+ew.ready(["jquery", "dom", "popper"], ew.PATH_BASE + "bootstrap5/js/bootstrap.min.js?v=25.12.16", "bootstrap"); // Bootstrap
+ew.ready("popper", [ew.PATH_BASE + "js/tippy.umd.min.js?v=25.12.16", ew.PATH_BASE + "css/tippy.css?v=25.12.16",], "tippy"); // Tippy
 ew.ready("bootstrap", ew.PATH_BASE + "<?= AutoVersion("adminlte32/js/adminlte.js"); ?>", "adminlte"); // AdminLTE (After Bootstrap)
 ew.ready(["jquery", "widget", "msdropdown"], [jqueryjs], "jqueryjs");
 ew.ready(["bootstrap", "adminlte", "jqueryjs", "luxon", "others"], ew.PATH_BASE + "<?= AutoVersion("js/masinoew.js"); ?>", "makerjs");

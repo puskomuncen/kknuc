@@ -1494,9 +1494,6 @@ class UsersAdd extends Users
             } else {
                 $this->Photo->EditValue = "";
             }
-            if (!IsEmpty($this->Photo->CurrentValue)) {
-                $this->Photo->Upload->FileName = $this->Photo->CurrentValue;
-            }
             if (!Config("CREATE_UPLOAD_FILE_ON_COPY")) {
                 $this->Photo->Upload->DbValue = null;
             }
@@ -1542,9 +1539,6 @@ class UsersAdd extends Users
                 $this->Avatar->EditValue = $this->Avatar->Upload->DbValue;
             } else {
                 $this->Avatar->EditValue = "";
-            }
-            if (!IsEmpty($this->Avatar->CurrentValue)) {
-                $this->Avatar->Upload->FileName = $this->Avatar->CurrentValue;
             }
             if (!Config("CREATE_UPLOAD_FILE_ON_COPY")) {
                 $this->Avatar->Upload->DbValue = null;

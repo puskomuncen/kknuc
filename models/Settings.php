@@ -164,13 +164,13 @@ class Settings extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Option_Default->Lookup = new Lookup($this->Option_Default, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Option_Default->OptionCount = 2;
@@ -204,13 +204,13 @@ class Settings extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Show_Announcement->Lookup = new Lookup($this->Show_Announcement, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Show_Announcement->OptionCount = 2;
@@ -244,13 +244,13 @@ class Settings extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Use_Announcement_Table->Lookup = new Lookup($this->Use_Announcement_Table, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Use_Announcement_Table->OptionCount = 2;
@@ -284,13 +284,13 @@ class Settings extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Maintenance_Mode->Lookup = new Lookup($this->Maintenance_Mode, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Maintenance_Mode->OptionCount = 2;
@@ -348,13 +348,13 @@ class Settings extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Auto_Normal_After_Maintenance->Lookup = new Lookup($this->Auto_Normal_After_Maintenance, 'Settings', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Auto_Normal_After_Maintenance->OptionCount = 2;

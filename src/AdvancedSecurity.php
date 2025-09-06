@@ -19,7 +19,6 @@ use Throwable;
 class AdvancedSecurity
 {
     use TargetPathTrait;
-    protected bool $hierarchyLoaded = false;
 
     // User level contants
     public const ANONYMOUS_USER_LEVEL_ID = -2;
@@ -68,6 +67,9 @@ class AdvancedSecurity
 
         // Load user level
         $this->loadUserLevel();
+
+        // Set Hierarchy
+        $this->setHierarchy($this->CurrentUserLevelID);
     }
 
     /**
@@ -178,10 +180,7 @@ class AdvancedSecurity
     // Set Hierarchy
     protected function setHierarchy(int|string $v): void
     {
-        if (!$this->hierarchyLoaded) { // Load only once
-            $this->UserLevelIDs = array_unique(array_merge($this->UserLevelIDs, $this->getAllUserLevelsFromHierarchy($v)));
-            $this->hierarchyLoaded = true;
-        }
+        $this->UserLevelIDs = array_unique(array_merge($this->UserLevelIDs, $this->getAllUserLevelsFromHierarchy($v)));
     }
 
     /**
@@ -1034,8 +1033,8 @@ class AdvancedSecurity
     // Load table permissions
     public function loadTablePermissions(string $tblVar): void
     {
-        $this->setHierarchy($this->CurrentUserLevelID);
-        $tblName = GetTableName($tblVar);
+        $this->setHierarchy($this->CurrentUserLevelID); // Make sure Hierarchy permissions are loaded
+		$tblName = GetTableName($tblVar);
         if ($this->isLoggedIn() && method_exists($this, "tablePermissionLoading")) {
             $this->tablePermissionLoading();
         }
@@ -1259,6 +1258,7 @@ class AdvancedSecurity
         $userLevelIds = [];
         $userLevels = $this->getUserLevelHierarchy($userLevelId);
         foreach ($userLevels as $userLevel) {
+			$userLevelIds[] = (int)$userLevel; // Add this level
             $userLevelSubIds = $this->getAllUserLevelsFromHierarchy($userLevel); // Add sub levels
             foreach ($userLevelSubIds as $userLevelSubId) {
                 if (!in_array((int)$userLevelSubId, $userLevelIds)) {

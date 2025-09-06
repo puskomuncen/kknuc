@@ -1527,9 +1527,6 @@ class UsersEdit extends Users
             } else {
                 $this->Photo->EditValue = "";
             }
-            if (!IsEmpty($this->Photo->CurrentValue)) {
-                $this->Photo->Upload->FileName = $this->Photo->CurrentValue;
-            }
             if ($this->isShow()) {
                 $this->Photo->Upload->setupTempDirectory();
             }
@@ -1577,9 +1574,6 @@ class UsersEdit extends Users
                 $this->Avatar->EditValue = $this->Avatar->Upload->DbValue;
             } else {
                 $this->Avatar->EditValue = "";
-            }
-            if (!IsEmpty($this->Avatar->CurrentValue)) {
-                $this->Avatar->Upload->FileName = $this->Avatar->CurrentValue;
             }
             if ($this->isShow()) {
                 $this->Avatar->Upload->setupTempDirectory();

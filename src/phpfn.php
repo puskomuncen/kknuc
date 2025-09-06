@@ -2157,7 +2157,15 @@ function GetMultiSearchSql(DbField $fld, string $fldOpr, string $fldVal, string 
     } else {
         if ($fld->UseFilter) { // Use filter
             $sep = Config("FILTER_OPTION_SEPARATOR");
-            $wrk = GetMultiValueFilter($fld->Expression, explode($sep, $fldVal), $dbid, "=", "OR", $sep);
+            $arVal = explode($sep, $fldVal);
+            if ($fld->isBoolean() || $fld->DataType == DataType::NUMBER) { // Handle boolean/Number field
+                $wrk = "";
+                foreach ($arVal as $val) {
+                    AddFilter($wrk, SearchFilter($fld->Expression, "=", $val, $fldDataType, $dbid), "OR");
+                }
+            } else {
+                $wrk = GetMultiValueFilter($fld->Expression, $arVal, $dbid, "=", "OR", $sep);
+            }
         } else {
             $sep ??= Config("MULTIPLE_OPTION_SEPARATOR");
             $arVal = explode($sep, $fldVal);
@@ -4933,7 +4941,7 @@ function ComparePassword(string $pwd, string $input): bool
  */
 function GetPasswordHasher(?string $className = null): ?PasswordHasherInterface
 {
-    if ($className === null && !Config("ENCRYPTED_PASSWORD")) {
+    if ($className === null && !Config("ENCRYPTED_PASSWORD") && !Config("MIGRATE_PASSWORD")) {
         return null;
     }
     $hasher = Config("SECURITY.password_hashers")[$className ?? PasswordAuthenticatedUserInterface::class] ?? null;

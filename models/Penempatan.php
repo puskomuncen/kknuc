@@ -228,13 +228,13 @@ class Penempatan extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->status->Lookup = new Lookup($this->status, 'penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->status->Lookup = new Lookup($this->status, 'penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->status->Lookup = new Lookup($this->status, 'penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Penempatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->status->OptionCount = 2;

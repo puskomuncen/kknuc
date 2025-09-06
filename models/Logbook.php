@@ -230,13 +230,13 @@ class Logbook extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'Logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'Logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->validasi_dosen->Lookup = new Lookup($this->validasi_dosen, 'Logbook', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->validasi_dosen->OptionCount = 2;

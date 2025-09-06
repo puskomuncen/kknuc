@@ -1,0 +1,3 @@
+1757132568
+lookup.cache.mahasiswa.4c73f9ecafb97acd0992a4474365851c
+a:1:{s:205:"query=SELECT `nim` AS `lf`, `nama` AS `df`, '' AS `df2`, '' AS `df3`, '' AS `df4` FROM mahasiswa&params=a:0:{}&types=a:0:{}&connectionParams=34e21aab7f8a214ec3dc1cba918b584e1f6ed14fa80499cd6f60d2824ea49793";O:31:"Doctrine\DBAL\Cache\ArrayResult":2:{i:0;a:5:{i:0;s:2:"lf";i:1;s:2:"df";i:2;s:3:"df2";i:3;s:3:"df3";i:4;s:3:"df4";}i:1;a:1:{i:0;a:5:{i:0;s:6:"434324";i:1;s:11:"John Samori";i:2;s:0:"";i:3;s:0:"";i:4;s:0:"";}}}}

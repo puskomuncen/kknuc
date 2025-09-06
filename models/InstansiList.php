@@ -955,7 +955,7 @@ class InstansiList extends Instansi
 		$_SESSION["First_Record"] = $first_rec;
 
         // Set ReturnUrl in header if necessary
-        if ($returnUrl = (FlashBag()->get("Return-Url") ?? "")) {
+        if ($returnUrl = (FlashBag()->get("Return-Url")[0] ?? "")) {
             AddHeader("Return-Url", GetUrl($returnUrl));
         }
 

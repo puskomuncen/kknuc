@@ -221,6 +221,17 @@ class Lookup
             return false;
         }
 
+        // Handle boolean field user values
+        if ($this->Field->isBoolean() && $this->Field->OptionCount > 0) {
+            $result = ["result" => "OK", "records" => $this->Field->options(false), "totalRecordCount" => $this->Field->OptionCount]; 
+            if ($response) {
+                WriteJson($result);
+                return true;
+            } else {
+                return $result;
+            }
+        }
+
         // Get table object
         $tbl = $this->getTable();
         if ($tbl) { // Load lookup table permissions (including User IDs)
@@ -674,7 +685,9 @@ class Lookup
     {
         $valid = $val != "";
         $where = "";
-        $ar = $this->Field->isMultiSelect() ? explode(Config("MULTIPLE_OPTION_SEPARATOR"), $val) : [$val];
+        $ar = $this->Field->HtmlTag == "SELECT" && $this->Field->SelectMultiple || $this->Field->HtmlTag == "CHECKBOX" // DO NOT use $this->Field->isMultiSelect() which must be string type field
+            ? explode(Config("MULTIPLE_OPTION_SEPARATOR"), $val)
+            : [$val];
         if ($fld->DataType == DataType::NUMBER) { // Validate numeric fields
             foreach ($ar as $val) {
                 if (!is_numeric($val)) {

@@ -161,13 +161,13 @@ class HelpCategories extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
             case "id-ID":
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
             default:
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
         }
         $this->_Language->SearchOperators = ["=", "<>"];

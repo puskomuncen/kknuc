@@ -160,13 +160,13 @@ class Pendaftaran extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                $this->nim->Lookup = new Lookup($this->nim, 'Mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
                 break;
             case "id-ID":
-                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                $this->nim->Lookup = new Lookup($this->nim, 'Mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
                 break;
             default:
-                $this->nim->Lookup = new Lookup($this->nim, 'mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
+                $this->nim->Lookup = new Lookup($this->nim, 'Mahasiswa', false, 'nim', ["nama","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama`");
                 break;
         }
         $this->nim->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
@@ -198,13 +198,13 @@ class Pendaftaran extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'Kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
                 break;
             case "id-ID":
-                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'Kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
                 break;
             default:
-                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
+                $this->id_kegiatan->Lookup = new Lookup($this->id_kegiatan, 'Kegiatan', false, 'id_kegiatan', ["nama_kegiatan","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nama_kegiatan`");
                 break;
         }
         $this->id_kegiatan->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
@@ -234,13 +234,13 @@ class Pendaftaran extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->status->Lookup = new Lookup($this->status, 'pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->status->Lookup = new Lookup($this->status, 'pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->status->Lookup = new Lookup($this->status, 'pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->status->Lookup = new Lookup($this->status, 'Pendaftaran', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->status->OptionCount = 3;

@@ -182,13 +182,13 @@ class Userlevels extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             case "id-ID":
-                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             default:
-                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Hierarchy->Lookup = new Lookup($this->Hierarchy, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
         }
         $this->Hierarchy->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
@@ -220,13 +220,13 @@ class Userlevels extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             case "id-ID":
-                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             default:
-                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->Level_Origin->Lookup = new Lookup($this->Level_Origin, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
         }
         $this->Level_Origin->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");

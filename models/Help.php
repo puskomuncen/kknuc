@@ -166,13 +166,13 @@ class Help extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
             case "id-ID":
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
             default:
-                $this->_Language->Lookup = new Lookup($this->_Language, 'languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
+                $this->_Language->Lookup = new Lookup($this->_Language, 'Languages', false, 'Language_Code', ["Language_Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Language_Name`");
                 break;
         }
         $this->_Language->SearchOperators = ["=", "<>"];
@@ -255,13 +255,13 @@ class Help extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Category->Lookup = new Lookup($this->Category, 'help_categories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
+                $this->Category->Lookup = new Lookup($this->Category, 'HelpCategories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
                 break;
             case "id-ID":
-                $this->Category->Lookup = new Lookup($this->Category, 'help_categories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
+                $this->Category->Lookup = new Lookup($this->Category, 'HelpCategories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
                 break;
             default:
-                $this->Category->Lookup = new Lookup($this->Category, 'help_categories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
+                $this->Category->Lookup = new Lookup($this->Category, 'HelpCategories', false, 'Category_ID', ["Category_Description","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Category_Description`");
                 break;
         }
         $this->Category->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
@@ -343,13 +343,13 @@ class Help extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
+                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
                 break;
             case "id-ID":
-                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
+                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
                 break;
             default:
-                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
+                $this->Updated_By->Lookup = new Lookup($this->Updated_By, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->Updated_By) . "',COALESCE(`LastName`,''))");
                 break;
         }
         $this->Updated_By->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];

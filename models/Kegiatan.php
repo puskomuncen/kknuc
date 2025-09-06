@@ -159,13 +159,13 @@ class Kegiatan extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->nama_kegiatan->Lookup = new Lookup($this->nama_kegiatan, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->nama_kegiatan->OptionCount = 3;
@@ -219,13 +219,13 @@ class Kegiatan extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->semester->Lookup = new Lookup($this->semester, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->semester->Lookup = new Lookup($this->semester, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->semester->Lookup = new Lookup($this->semester, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->semester->Lookup = new Lookup($this->semester, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->semester->Lookup = new Lookup($this->semester, 'kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->semester->Lookup = new Lookup($this->semester, 'Kegiatan', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->semester->OptionCount = 2;

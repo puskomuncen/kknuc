@@ -586,7 +586,7 @@ class ListOptions implements \ArrayAccess, \IteratorAggregate
             }
         }
         $btndropdown = '';
-        if ($links != '') {
+        if ($links != '' || $submenu && $submenulinks != '') {
             if ($submenu) { // End previous submenu
                 if ($submenulinks != '') { // Set up submenu
                     $links .= '<li class="dropdown-submenu dropdown-hover">' . $submenulink . '<ul class="dropdown-menu">' . $submenulinks . '</ul></li>';

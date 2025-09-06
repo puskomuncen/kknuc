@@ -229,13 +229,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             case "id-ID":
-                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
             default:
-                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
+                $this->UserLevel->Lookup = new Lookup($this->UserLevel, 'Userlevels', false, 'ID', ["Name","","",""], '', "", [], [], [], [], [], [], false, '', '', "`Name`");
                 break;
         }
         $this->UserLevel->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
@@ -455,13 +455,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Gender->Lookup = new Lookup($this->Gender, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Gender->Lookup = new Lookup($this->Gender, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Gender->Lookup = new Lookup($this->Gender, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Gender->Lookup = new Lookup($this->Gender, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Gender->Lookup = new Lookup($this->Gender, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Gender->Lookup = new Lookup($this->Gender, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Gender->OptionCount = 2;
@@ -517,13 +517,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->Activated->Lookup = new Lookup($this->Activated, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Activated->Lookup = new Lookup($this->Activated, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->Activated->Lookup = new Lookup($this->Activated, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Activated->Lookup = new Lookup($this->Activated, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->Activated->Lookup = new Lookup($this->Activated, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->Activated->Lookup = new Lookup($this->Activated, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->Activated->OptionCount = 2;
@@ -598,13 +598,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             case "id-ID":
-                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
             default:
-                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+                $this->ActiveStatus->Lookup = new Lookup($this->ActiveStatus, 'Users', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
                 break;
         }
         $this->ActiveStatus->OptionCount = 2;
@@ -685,13 +685,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
+                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
                 break;
             case "id-ID":
-                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
+                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
                 break;
             default:
-                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
+                $this->CreatedBy->Lookup = new Lookup($this->CreatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->CreatedBy) . "',COALESCE(`LastName`,''))");
                 break;
         }
         $this->CreatedBy->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
@@ -748,13 +748,13 @@ class Users extends DbTable implements LookupTableInterface
         global $CurrentLanguage;
         switch ($CurrentLanguage) {
             case "en-US":
-                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
+                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
                 break;
             case "id-ID":
-                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
+                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
                 break;
             default:
-                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
+                $this->UpdatedBy->Lookup = new Lookup($this->UpdatedBy, 'Users', false, 'Username', ["FirstName","LastName","",""], '', "", [], [], [], [], [], [], false, '', '', "CONCAT(COALESCE(`FirstName`, ''),'" . ValueSeparator(1, $this->UpdatedBy) . "',COALESCE(`LastName`,''))");
                 break;
         }
         $this->UpdatedBy->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
@@ -1230,7 +1230,7 @@ class Users extends DbTable implements LookupTableInterface
             if (!isset($this->Fields[$name]) || $this->Fields[$name]->IsCustom) {
                 continue;
             }
-            if (Config("ENCRYPTED_PASSWORD") && $name == Config("LOGIN_PASSWORD_FIELD_NAME")) {
+            if ((Config("ENCRYPTED_PASSWORD") || Config("MIGRATE_PASSWORD")) && $name == Config("LOGIN_PASSWORD_FIELD_NAME")) {
                 $value = HashPassword($value);
             }
             $field = $this->Fields[$name];
@@ -1278,7 +1278,7 @@ class Users extends DbTable implements LookupTableInterface
             if (!isset($this->Fields[$name]) || $this->Fields[$name]->IsCustom || $this->Fields[$name]->IsAutoIncrement) {
                 continue;
             }
-            if (Config("ENCRYPTED_PASSWORD") && $name == Config("LOGIN_PASSWORD_FIELD_NAME")) {
+            if ((Config("ENCRYPTED_PASSWORD") || Config("MIGRATE_PASSWORD")) && $name == Config("LOGIN_PASSWORD_FIELD_NAME")) {
                 if ($value == $this->Fields[$name]->OldValue) { // No need to update hashed password if not changed
                     continue;
                 }

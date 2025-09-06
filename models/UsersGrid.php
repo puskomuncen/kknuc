@@ -819,7 +819,7 @@ class UsersGrid extends Users
         $this->Pager = new PrevNextPager($this, $this->StartRecord, $this->DisplayRecords, $this->TotalRecords, "", $this->RecordRange, $this->AutoHidePager, null, null, false, true, $url);
 
         // Set ReturnUrl in header if necessary
-        if ($returnUrl = (FlashBag()->get("Return-Url") ?? "")) {
+        if ($returnUrl = (FlashBag()->get("Return-Url")[0] ?? "")) {
             AddHeader("Return-Url", GetUrl($returnUrl));
         }
 
@@ -2381,13 +2381,6 @@ class UsersGrid extends Users
             } else {
                 $this->Photo->EditValue = "";
             }
-            if (!IsEmpty($this->Photo->CurrentValue)) {
-                if ($this->RowIndex == '$rowindex$') {
-                    $this->Photo->Upload->FileName = "";
-                } else {
-                    $this->Photo->Upload->FileName = $this->Photo->CurrentValue;
-                }
-            }
             if (!Config("CREATE_UPLOAD_FILE_ON_COPY")) {
                 $this->Photo->Upload->DbValue = null;
             }
@@ -2542,13 +2535,6 @@ class UsersGrid extends Users
                 $this->Photo->EditValue = $this->Photo->Upload->DbValue;
             } else {
                 $this->Photo->EditValue = "";
-            }
-            if (!IsEmpty($this->Photo->CurrentValue)) {
-                if ($this->RowIndex == '$rowindex$') {
-                    $this->Photo->Upload->FileName = "";
-                } else {
-                    $this->Photo->Upload->FileName = $this->Photo->CurrentValue;
-                }
             }
             if (is_numeric($this->RowIndex)) {
                 $this->Photo->Upload->setupTempDirectory($this->RowIndex);

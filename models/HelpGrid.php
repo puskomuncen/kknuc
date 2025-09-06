@@ -794,7 +794,7 @@ class HelpGrid extends Help
         $this->Pager = new PrevNextPager($this, $this->StartRecord, $this->DisplayRecords, $this->TotalRecords, "", $this->RecordRange, $this->AutoHidePager, null, null, false, true, $url);
 
         // Set ReturnUrl in header if necessary
-        if ($returnUrl = (FlashBag()->get("Return-Url") ?? "")) {
+        if ($returnUrl = (FlashBag()->get("Return-Url")[0] ?? "")) {
             AddHeader("Return-Url", GetUrl($returnUrl));
         }
 

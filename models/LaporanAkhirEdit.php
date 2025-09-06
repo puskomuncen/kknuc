@@ -900,9 +900,6 @@ class LaporanAkhirEdit extends LaporanAkhir
             } else {
                 $this->file_laporan->EditValue = "";
             }
-            if (!IsEmpty($this->file_laporan->CurrentValue)) {
-                $this->file_laporan->Upload->FileName = $this->file_laporan->CurrentValue;
-            }
             if ($this->isShow()) {
                 $this->file_laporan->Upload->setupTempDirectory();
             }
